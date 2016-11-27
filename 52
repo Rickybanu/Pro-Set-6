@@ -1,0 +1,22 @@
+#include <iostream>
+bool is_square(int ax, int ay, int bx, int by,
+int cx, int cy, int dx, int dy) 
+{
+auto ck = [] (int ax, int ay, int bx, int by,
+                  int cx, int cy, int dx, int dy) -> bool {
+        return (bx - ax == cy - by) && (by - ay == cx - bx)
+            && (dx - cx == ay - dy) && (dy - cy == ax - dx);
+    };   
+    return  ck(ax, ay, bx, by, cx, cy, dx, dy)
+         || ck(ax, ay, bx, by, dx, dy, cx, cy)
+         || ck(ax, ay, cx, cy, bx, by, dx, dy);
+}
+using namespace std;
+int main(int argc, char *argv[]) 
+{
+if (argc == 9)
+if (is_square(atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]),
+atoi(argv[5]), atoi(argv[6]), atoi(argv[7]), atoi(argv[8])))
+cout << "Is a square." << endl;
+else cout << "Is not a square." << endl;
+}
